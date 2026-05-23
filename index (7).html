@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlantic Bagel & Coffee Co. — Hingham & Cohasset, MA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F2EA;
+    --warm-white: #FDFAF5;
+    --navy: #1A2B3C;
+    --coffee: #6B3A2A;
+    --coffee-light: #9C5B3F;
+    --gold: #C9943A;
+    --gold-pale: #F0DFB8;
+    --slate: #4A5568;
+    --text: #1A2B3C;
+    --muted: #7A8899;
+    --border: rgba(26,43,60,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,250,245,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--coffee); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--slate);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--coffee); }
+  .nav-cta {
+    background: var(--coffee);
+    color: #fff !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--coffee-light) !important; color: #fff !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    padding: 100px 2.5rem 80px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -80px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: var(--gold-pale);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--coffee);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--coffee);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--slate);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--coffee);
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--coffee-light); transform: translateY(-1px); }
+  .btn-secondary {
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+    padding: 0.8rem 1.8rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: var(--navy); color: #fff; }
+
+  /* hero stats */
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 3rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* hero image grid */
+  .hero-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 240px 240px;
+    gap: 12px;
+    position: relative;
+  }
+  .hero-img {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--gold-pale);
+    position: relative;
+  }
+  .hero-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-img:first-child {
+    grid-row: span 2;
+    border-radius: 20px;
+  }
+  .hero-img:nth-child(2) { border-radius: 20px 20px 0 0; }
+  .hero-img:nth-child(3) { border-radius: 0 0 20px 20px; }
+  /* Placeholder tint when no image */
+  .img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(107,58,42,0.4);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .img-placeholder svg { opacity: 0.4; }
+  .badge-float {
+    position: absolute; bottom: 14px; left: 14px;
+    background: #fff;
+    border-radius: 100px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.03em;
+    box-shadow: 0 2px 12px rgba(26,43,60,0.12);
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-wrap {
+    background: var(--navy);
+    color: #fff;
+    overflow: hidden;
+    padding: 1rem 0;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-track span {
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 2.5rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .marquee-track span::before {
+    content: '✦';
+    margin-right: 2.5rem;
+    color: var(--gold);
+    font-size: 0.6rem;
+    vertical-align: middle;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── SECTION SCAFFOLDING ─── */
+  section { padding: 96px 2.5rem; }
+  .section-inner { max-width: 1160px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--coffee);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.9rem);
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+  .section-title em { font-style: italic; color: var(--coffee); }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--slate);
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--warm-white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3.5rem;
+  }
+  .about-text p {
+    color: var(--slate);
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .pillar {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+  }
+  .pillar-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .pillar h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+  .pillar p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 !important;
+  }
+  .about-image-stack {
+    position: relative;
+  }
+  .about-img-main {
+    width: 100%; aspect-ratio: 4/5;
+    background: var(--gold-pale);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+  .about-img-accent {
+    position: absolute;
+    bottom: -24px; right: -24px;
+    width: 48%;
+    aspect-ratio: 1;
+    background: var(--cream);
+    border: 4px solid var(--warm-white);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ─── MENU ─── */
+  #menu { background: var(--cream); }
+  .menu-tabs {
+    display: flex; gap: 0.5rem;
+    margin: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+  .menu-tab {
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+    padding: 0.75rem 1.25rem;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    font-weight: 400;
+    transition: all 0.2s;
+  }
+  .menu-tab.active {
+    color: var(--coffee);
+    border-bottom-color: var(--coffee);
+    font-weight: 500;
+  }
+  .menu-tab:hover { color: var(--coffee); }
+  .menu-panel { display: none; }
+  .menu-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .menu-item {
+    background: var(--warm-white);
+    border-radius: 14px;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .menu-item:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .menu-item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .menu-item-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .menu-note {
+    margin-top: 2.5rem;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 14px;
+    padding: 1.25rem 1.6rem;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .menu-note span { color: rgba(255,255,255,0.7); }
+  .menu-note strong { color: var(--gold); }
+
+  /* ─── GALLERY ─── */
+  #gallery { background: var(--warm-white); }
+  .gallery-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .insta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--coffee);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1.5px solid var(--coffee);
+    border-radius: 100px;
+    padding: 0.5rem 1.1rem;
+    transition: all 0.2s;
+  }
+  .insta-link:hover { background: var(--coffee); color: #fff; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 300px);
+    gap: 12px;
+  }
+  .gallery-cell {
+    background: var(--gold-pale);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .gallery-cell img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .gallery-cell:hover img { transform: scale(1.04); }
+  .gallery-cell:first-child {
+    grid-row: span 2;
+    border-radius: 20px;
+  }
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(26,43,60,0.75) 0%, transparent 100%);
+    padding: 2rem 1.1rem 1rem;
+    color: #fff;
+    font-size: 0.78rem;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .gallery-cell:hover .gallery-caption { opacity: 1; }
+  .gallery-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    background: var(--gold-pale);
+    border: 2px dashed rgba(107,58,42,0.25);
+    border-radius: inherit;
+  }
+  .gallery-placeholder span {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--coffee-light);
+    letter-spacing: 0.03em;
+  }
+  .gallery-placeholder small {
+    font-size: 0.68rem;
+    color: rgba(107,58,42,0.45);
+    font-family: 'Courier New', monospace;
+  }
+  .gallery-note {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.6rem;
+    background: var(--cream);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+  .gallery-note code {
+    background: var(--gold-pale);
+    color: var(--coffee);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+  }
+
+  /* ─── REVIEWS ─── */
+  #reviews { background: var(--navy); }
+  #reviews .section-eyebrow { color: var(--gold); }
+  #reviews .section-title { color: #fff; }
+  #reviews .section-sub { color: rgba(255,255,255,0.65); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+  .review-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: background 0.2s;
+  }
+  .review-card:hover { background: rgba(255,255,255,0.1); }
+  .review-stars {
+    color: var(--gold);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .review-text {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 1.25rem;
+  }
+  .review-author {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .review-source {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,148,58,0.4);
+    border-radius: 100px;
+    padding: 0.15rem 0.6rem;
+    margin-top: 0.3rem;
+  }
+
+  /* ─── LOCATIONS ─── */
+  #locations { background: var(--cream); }
+  .locations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+  .location-card {
+    background: var(--warm-white);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+  }
+  .location-card:hover { transform: translateY(-4px); }
+  .location-map {
+    height: 220px;
+    background: var(--gold-pale);
+    position: relative;
+  }
+  .location-map iframe {
+    width: 100%; height: 100%;
+    border: none;
+    display: block;
+  }
+  .location-tag {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.35rem 0.8rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .location-body { padding: 1.75rem; }
+  .location-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .location-addr {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+  .location-info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+  .info-label {
+    min-width: 60px;
+    font-weight: 500;
+    color: var(--coffee);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-top: 0.1rem;
+  }
+  .info-value { color: var(--slate); line-height: 1.6; }
+  .location-hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin-top: 0.5rem;
+  }
+  .location-hours-table td { padding: 0.2rem 0; color: var(--slate); }
+  .location-hours-table td:first-child { color: var(--muted); width: 110px; }
+  .location-hours-table td:last-child { font-weight: 500; }
+  .location-actions {
+    display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;
+  }
+  .loc-btn {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.55rem 1.1rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .loc-btn-primary {
+    background: var(--coffee);
+    color: #fff;
+  }
+  .loc-btn-primary:hover { background: var(--coffee-light); }
+  .loc-btn-outline {
+    border: 1.5px solid var(--border);
+    color: var(--slate);
+  }
+  .loc-btn-outline:hover { border-color: var(--navy); color: var(--navy); }
+  .cash-badge {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: var(--coffee);
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+    margin-top: 0.5rem;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    padding: 3rem 2.5rem;
+  }
+  .footer-inner {
+    max-width: 1160px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand .nav-logo {
+    color: #fff;
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 300px; }
+  .footer-col h5 {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; font-size: 0.85rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1160px; margin: 0 auto;
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .social-links { display: flex; gap: 1rem; }
+  .social-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+  .social-links a:hover { color: #fff; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-image-stack { display: none; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .locations-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-cell:first-child { grid-row: auto; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 64px 1.25rem; }
+    .hero { padding: 90px 1.25rem 60px; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Atlantic <span>Bagel</span> & Coffee Co.</a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#locations" class="nav-cta">Find Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Hingham & Cohasset, MA</span>
+    <h1>Fresh bagels,<br><em>daily baked,</em><br>since the '90s.</h1>
+    <p class="hero-desc">A South Shore institution. Handcrafted bagels out of the oven every morning, made-to-order sandwiches, and coffee that brings the whole neighborhood in. No chains. No fuss. Just really good bagels.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">Explore the Menu</a>
+      <a href="#locations" class="btn-secondary">Find a Location</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Years on the South Shore</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Neighborhood Locations</div>
+      </div>
+      <div>
+        <div class="stat-num">4.4★</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-img">
+      <!--
+        REPLACE THIS with:
+        <img src="images/hero-main.jpg" alt="Fresh bagels at Atlantic Bagel & Coffee Co.">
+      -->
+      <div class="img-placeholder">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#6B3A2A" stroke-width="2"/>
+          <circle cx="20" cy="20" r="8" stroke="#6B3A2A" stroke-width="2"/>
+        </svg>
+        <span>images/hero-main.jpg</span>
+      </div>
+      <span class="badge-float">Baked Fresh Daily</span>
+    </div>
+    <div class="hero-img">
+      <!-- <img src="images/hero-top.jpg" alt="Bagel sandwich"> -->
+      <div class="img-placeholder"><span>images/hero-top.jpg</span></div>
+    </div>
+    <div class="hero-img">
+      <!-- <img src="images/hero-bottom.jpg" alt="Coffee at Atlantic Bagel"> -->
+      <div class="img-placeholder"><span>images/hero-bottom.jpg</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Fresh-baked daily</span>
+    <span>Everything bagels</span>
+    <span>Jalapeño cream cheese</span>
+    <span>Bacon egg & cheese</span>
+    <span>Hornstra's chocolate milk</span>
+    <span>Best bagels on the South Shore</span>
+    <span>Cash only</span>
+    <span>Open 7 days</span>
+    <span>Hingham & Cohasset</span>
+    <span>Free coffee refills</span>
+    <span>Fresh-baked daily</span>
+    <span>Everything bagels</span>
+    <span>Jalapeño cream cheese</span>
+    <span>Bacon egg & cheese</span>
+    <span>Hornstra's chocolate milk</span>
+    <span>Best bagels on the South Shore</span>
+    <span>Cash only</span>
+    <span>Open 7 days</span>
+    <span>Hingham & Cohasset</span>
+    <span>Free coffee refills</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <span class="section-eyebrow">Our Story</span>
+    <h2 class="section-title">A neighborhood spot,<br><em>built on community.</em></h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Atlantic Bagel & Coffee Co. has been a cornerstone of the South Shore since the 1990s, with beloved locations in Hingham and Cohasset. More than just a bagel shop, it's where neighbors greet neighbors, where regulars are remembered by name, and where locals come for a warm, familiar start to the day.</p>
+        <p>The bagels are baked fresh every single morning — you can order rosemary olive oil, asiago, pumpernickel, everything, cinnamon sugar, and more. Cream cheese comes in flavors you won't find at any chain: jalapeño, olive, scallion, walnut raisin, sun-dried tomato, and herb. Get your coffee and your cup back later for a free refill.</p>
+        <p>It's cash only. It's a little no-frills. And it's absolutely worth it — the line out the door on a Saturday morning will tell you everything.</p>
+
+        <div class="about-pillars">
+          <div class="pillar">
+            <span class="pillar-icon">🥯</span>
+            <h4>Baked Every Morning</h4>
+            <p>Never yesterday's bagels. Every batch is fresh before the doors open.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">☕</span>
+            <h4>Great Coffee</h4>
+            <p>Good coffee, free refills on your cup. Simple as that.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🏘️</span>
+            <h4>Locally Loved</h4>
+            <p>30+ years serving Hingham and Cohasset — a true South Shore institution.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🥛</span>
+            <h4>Hornstra's Milk</h4>
+            <p>Local Hornstra's chocolate milk on the menu. Grab one with your bagel.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-image-stack fade-in">
+        <div class="about-img-main">
+          <!-- <img src="images/about-main.jpg" alt="Inside Atlantic Bagel"> -->
+          <div class="img-placeholder" style="height:100%"><span>images/about-main.jpg</span></div>
+        </div>
+        <div class="about-img-accent">
+          <!-- <img src="images/about-accent.jpg" alt="Cream cheese selection"> -->
+          <div class="img-placeholder" style="height:100%"><span>images/about-accent.jpg</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-inner">
+    <span class="section-eyebrow">What We Serve</span>
+    <h2 class="section-title">The menu</h2>
+    <p class="section-sub">Fresh-baked bagels, made-to-order sandwiches, house-made cream cheese, and coffee. Breakfast and lunch, every day.</p>
+
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="switchTab('bagels')">Bagels</button>
+      <button class="menu-tab" onclick="switchTab('sandwiches')">Sandwiches</button>
+      <button class="menu-tab" onclick="switchTab('spreads')">Cream Cheese & Spreads</button>
+      <button class="menu-tab" onclick="switchTab('drinks')">Drinks & Sides</button>
+    </div>
+
+    <div id="bagels" class="menu-panel active">
+      <div class="menu-item"><div class="menu-item-name">Plain</div><div class="menu-item-desc">The classic. Soft, chewy center, golden crust.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Everything</div><div class="menu-item-desc">Sesame, poppy, onion, garlic — the fan favorite.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Rosemary Olive Oil</div><div class="menu-item-desc">Fragrant, savory, and unlike anything at a chain.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Cinnamon Sugar</div><div class="menu-item-desc">A sweet South Shore staple. Especially good toasted.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Asiago</div><div class="menu-item-desc">Rich, cheesy, baked until golden. Fan favorite.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Pumpernickel</div><div class="menu-item-desc">Deep, earthy flavor with a dense, satisfying chew.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Whole Wheat</div><div class="menu-item-desc">Hearty and wholesome. A nutritious morning staple.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Sunflower</div><div class="menu-item-desc">Nutty, seeded, and deliciously different.</div></div>
+    </div>
+
+    <div id="sandwiches" class="menu-panel">
+      <div class="menu-item"><div class="menu-item-name">Bacon, Egg & Cheese</div><div class="menu-item-desc">Two eggs, crispy bacon, your cheese of choice. The one to order.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Pork Roll, Egg & Cheese</div><div class="menu-item-desc">Griddled pork roll, two eggs, melted cheese on your bagel of choice.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Sausage, Egg & Cheese</div><div class="menu-item-desc">Savory breakfast sausage with egg and melted American.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Veggie, Egg & Cheese</div><div class="menu-item-desc">Two eggs, cheese, loaded with fresh veggies. No meat needed.</div></div>
+      <div class="menu-item"><div class="menu-item-name">The Works</div><div class="menu-item-desc">Bacon, pork roll, sausage, two eggs — the full spread.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Roast Beef & Herb Cream Cheese</div><div class="menu-item-desc">Sliced roast beef with house herb cream cheese and fresh vegetables.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Lox & Cream Cheese</div><div class="menu-item-desc">Generous salmon with scallion cream cheese. Abundantly filled.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Have It Your Way</div><div class="menu-item-desc">Your bagel, your spread, your toppings — fully customizable.</div></div>
+    </div>
+
+    <div id="spreads" class="menu-panel">
+      <div class="menu-item"><div class="menu-item-name">Plain Cream Cheese</div><div class="menu-item-desc">House-made, thick and creamy — a cut above store-bought.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Jalapeño Cream Cheese</div><div class="menu-item-desc">Customer favorite. Creamy with a real kick of heat.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Veggie Cream Cheese</div><div class="menu-item-desc">Packed with fresh vegetables. Light and flavorful.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Olive Cream Cheese</div><div class="menu-item-desc">A local classic. Briny, rich, and addictive.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Scallion Cream Cheese</div><div class="menu-item-desc">Fresh green onion folded into silky cream cheese.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Walnut Raisin</div><div class="menu-item-desc">Sweet raisins and toasted walnuts. Pairs beautifully with cinnamon sugar.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Sun-Dried Tomato</div><div class="menu-item-desc">Rich, concentrated tomato flavor in every bite.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Herb Cream Cheese</div><div class="menu-item-desc">A blend of garden herbs in house-made cream cheese.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Lox Spread</div><div class="menu-item-desc">Full of salmon flavor with abundant fish and scallion. Legendary.</div></div>
+    </div>
+
+    <div id="drinks" class="menu-panel">
+      <div class="menu-item"><div class="menu-item-name">Coffee</div><div class="menu-item-desc">Good, strong coffee. Bring the cup back for a free refill.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Iced Coffee</div><div class="menu-item-desc">Gourmet iced coffee — the perfect warm-weather pairing.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Hornstra's Chocolate Milk</div><div class="menu-item-desc">Local dairy, rich and creamy. A South Shore treat.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Homemade Soup</div><div class="menu-item-desc">Rotating daily selection of house-made soups. Ask what's on today.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Quiche</div><div class="menu-item-desc">Freshly made quiche, rotating flavors. Pair with your coffee.</div></div>
+      <div class="menu-item"><div class="menu-item-name">Muffins & Baked Goods</div><div class="menu-item-desc">Fresh-baked pastries and muffins alongside the bagels.</div></div>
+    </div>
+
+    <div class="menu-note">
+      <span>💵</span>
+      <div><strong>Cash & check only</strong> — <span>No credit or debit cards at either location. There's an ATM nearby if needed. Call ahead for large pre-orders.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="gallery-intro">
+      <div>
+        <span class="section-eyebrow">Gallery</span>
+        <h2 class="section-title" style="margin-bottom:0">From the gram</h2>
+      </div>
+      <a href="https://www.instagram.com/abcohasset/" target="_blank" rel="noopener" class="insta-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @abcohasset
+      </a>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- When you're ready: replace each .gallery-placeholder div with:
+           <img src="images/gallery-1.jpg" alt="…"> etc. -->
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="6" width="28" height="20" rx="3" stroke="#9C5B3F" stroke-width="1.5"/>
+            <circle cx="11" cy="13" r="2.5" stroke="#9C5B3F" stroke-width="1.5"/>
+            <path d="M2 22l7-5 5 4 4-3 7 5" stroke="#9C5B3F" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>Photo coming soon</span>
+          <small>images/gallery-1.jpg</small>
+        </div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="6" width="28" height="20" rx="3" stroke="#9C5B3F" stroke-width="1.5"/>
+            <circle cx="11" cy="13" r="2.5" stroke="#9C5B3F" stroke-width="1.5"/>
+            <path d="M2 22l7-5 5 4 4-3 7 5" stroke="#9C5B3F" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>Photo coming soon</span>
+          <small>images/gallery-2.jpg</small>
+        </div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="6" width="28" height="20" rx="3" stroke="#9C5B3F" stroke-width="1.5"/>
+            <circle cx="11" cy="13" r="2.5" stroke="#9C5B3F" stroke-width="1.5"/>
+            <path d="M2 22l7-5 5 4 4-3 7 5" stroke="#9C5B3F" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>Photo coming soon</span>
+          <small>images/gallery-3.jpg</small>
+        </div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="6" width="28" height="20" rx="3" stroke="#9C5B3F" stroke-width="1.5"/>
+            <circle cx="11" cy="13" r="2.5" stroke="#9C5B3F" stroke-width="1.5"/>
+            <path d="M2 22l7-5 5 4 4-3 7 5" stroke="#9C5B3F" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>Photo coming soon</span>
+          <small>images/gallery-4.jpg</small>
+        </div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="6" width="28" height="20" rx="3" stroke="#9C5B3F" stroke-width="1.5"/>
+            <circle cx="11" cy="13" r="2.5" stroke="#9C5B3F" stroke-width="1.5"/>
+            <path d="M2 22l7-5 5 4 4-3 7 5" stroke="#9C5B3F" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>Photo coming soon</span>
+          <small>images/gallery-5.jpg</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-note">
+      <strong>📸 How to add your Instagram photos:</strong><br>
+      1. Visit <a href="https://www.instagram.com/abcohasset/" target="_blank">@abcohasset on Instagram</a> and download your photos.<br>
+      2. Create an <code>images/</code> folder in your GitHub repository alongside <code>index.html</code>.<br>
+      3. Name your files: <code>gallery-1.jpg</code>, <code>gallery-2.jpg</code> … <code>gallery-5.jpg</code> (and <code>hero-main.jpg</code>, <code>hero-top.jpg</code>, <code>hero-bottom.jpg</code>, <code>about-main.jpg</code>, <code>about-accent.jpg</code> for the hero/about sections).<br>
+      4. Commit and push — the site will automatically display them.
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-inner">
+    <span class="section-eyebrow">What People Say</span>
+    <h2 class="section-title">South Shore's<br><em>favorite bagel spot.</em></h2>
+    <p class="section-sub">Dozens of years, hundreds of regulars, and a line out the door every Saturday morning.</p>
+
+    <div class="reviews-grid">
+
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Fresh bagels cooked to perfection and their jalapeño cream cheese is outstanding. The line is out the door but I'm happy to wait for the best bagels on the South Shore."</p>
+        <div class="review-author">South Shore Local</div>
+        <div class="review-source">Yelp · Hingham</div>
+      </div>
+
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Grew up here in Hingham. Been coming here for years. Won't go anywhere else for a fresh bagel. They offer Hornstra's chocolate milk too as a bonus."</p>
+        <div class="review-author">Lifelong Hingham Resident</div>
+        <div class="review-source">Sirved · Cohasset</div>
+      </div>
+
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Moved from Manhattan — the home of the perfect bagel — to Hingham, and these bagels are comparable. I feel at ease now. I can live happily in Hingham with my go-to bagel store."</p>
+        <div class="review-author">Former New Yorker</div>
+        <div class="review-source">TripAdvisor · Hingham</div>
+      </div>
+
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The best bagels on the South Shore of Massachusetts — cinnamon sugar can't be overlooked. Seriously the best you'll find south of Boston."</p>
+        <div class="review-author">Verified Reviewer</div>
+        <div class="review-source">TripAdvisor · Cohasset</div>
+      </div>
+
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I have been to at least 30 different bagel shops in the last 5 years and there is no question, they are the best! Great bagels and free refills on coffee — what more do you need?"</p>
+        <div class="review-author">Bagel Enthusiast</div>
+        <div class="review-source">Yelp · Hingham</div>
+      </div>
+
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Have been there hundreds of times and never been disappointed by their everything bagel. Great coffee, great bagels — a Cohasset institution. Mia and John are great!"</p>
+        <div class="review-author">Regular Customer</div>
+        <div class="review-source">Google · Cohasset</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations">
+  <div class="section-inner">
+    <span class="section-eyebrow">Two Locations</span>
+    <h2 class="section-title">Find us on the<br><em>South Shore</em></h2>
+    <p class="section-sub">Two neighborhood spots, same great bagels. Both cash and check only — both absolutely worth it.</p>
+
+    <div class="locations-grid">
+
+      <!-- HINGHAM -->
+      <div class="location-card fade-in">
+        <div class="location-map">
+          <div class="location-tag">Hingham</div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.8!2d-70.8934!3d42.2385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e49ea3dc1d8c95%3A0x0!2s282+Main+St%2C+Hingham%2C+MA+02043!5e0!3m2!1sen!2sus!4v1"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Atlantic Bagel Hingham map">
+          </iframe>
+        </div>
+        <div class="location-body">
+          <div class="location-name">Atlantic Bagel & Coffee Co.</div>
+          <div class="location-addr">282 Main St, Hingham, MA 02043</div>
+
+          <div class="location-info-row">
+            <span class="info-label">Hours</span>
+            <div class="info-value">
+              <table class="location-hours-table">
+                <tr><td>Mon – Fri</td><td>5:30 am – 2:00 pm</td></tr>
+                <tr><td>Saturday</td><td>5:30 am – 1:00 pm</td></tr>
+                <tr><td>Sunday</td><td>5:30 am – 1:00 pm</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="location-info-row">
+            <span class="info-label">Phone</span>
+            <span class="info-value"><a href="tel:7817400636" style="color:var(--coffee);text-decoration:none;">(781) 740-0636</a></span>
+          </div>
+
+          <div class="location-info-row">
+            <span class="info-label">Access</span>
+            <span class="info-value">Wheelchair accessible · Street parking</span>
+          </div>
+
+          <div><span class="cash-badge">💵 Cash & Check Only</span></div>
+
+          <div class="location-actions">
+            <a href="https://maps.google.com/?q=282+Main+St+Hingham+MA" target="_blank" rel="noopener" class="loc-btn loc-btn-primary">Get Directions</a>
+            <a href="tel:7817400636" class="loc-btn loc-btn-outline">Call</a>
+            <a href="https://www.yelp.com/biz/atlantic-bagel-and-coffee-hingham" target="_blank" rel="noopener" class="loc-btn loc-btn-outline">Yelp</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- COHASSET -->
+      <div class="location-card fade-in">
+        <div class="location-map">
+          <div class="location-tag">Cohasset</div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.2!2d-70.8023!3d42.2415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e49c9a9d8f5b1d%3A0x0!2s47+S+Main+St%2C+Cohasset%2C+MA+02025!5e0!3m2!1sen!2sus!4v1"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Atlantic Bagel Cohasset map">
+          </iframe>
+        </div>
+        <div class="location-body">
+          <div class="location-name">Atlantic Bagel & Coffee Co.</div>
+          <div class="location-addr">47 S Main St, Cohasset, MA 02025</div>
+
+          <div class="location-info-row">
+            <span class="info-label">Hours</span>
+            <div class="info-value">
+              <table class="location-hours-table">
+                <tr><td>Mon – Fri</td><td>6:00 am – 1:00 pm</td></tr>
+                <tr><td>Saturday</td><td>6:00 am – 1:00 pm</td></tr>
+                <tr><td>Sunday</td><td>6:00 am – 1:00 pm</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="location-info-row">
+            <span class="info-label">Phone</span>
+            <span class="info-value"><a href="tel:7813832902" style="color:var(--coffee);text-decoration:none;">(781) 383-2902</a></span>
+          </div>
+
+          <div class="location-info-row">
+            <span class="info-label">Order</span>
+            <span class="info-value">Call ahead for pre-orders · Delivery available</span>
+          </div>
+
+          <div><span class="cash-badge">💵 Cash & Check Only</span></div>
+
+          <div class="location-actions">
+            <a href="https://maps.google.com/?q=47+S+Main+St+Cohasset+MA" target="_blank" rel="noopener" class="loc-btn loc-btn-primary">Get Directions</a>
+            <a href="tel:7813832902" class="loc-btn loc-btn-outline">Call</a>
+            <a href="https://www.yelp.com/biz/atlantic-bagel-and-coffee-cohasset" target="_blank" rel="noopener" class="loc-btn loc-btn-outline">Yelp</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="font-family:'Playfair Display',serif;">Atlantic <span>Bagel</span> & Coffee Co.</a>
+      <p>Fresh-baked bagels, made-to-order sandwiches, and great coffee on the South Shore since the 1990s. Two locations: Hingham and Cohasset, Massachusetts.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#locations">Locations</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:7817400636">Hingham: (781) 740-0636</a></li>
+        <li><a href="tel:7813832902">Cohasset: (781) 383-2902</a></li>
+        <li><a href="https://www.instagram.com/abcohasset/" target="_blank">@abcohasset on Instagram</a></li>
+        <li><a href="https://www.facebook.com/atlanticbagelanddeli/" target="_blank">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Atlantic Bagel & Coffee Co. — Hingham & Cohasset, MA</span>
+    <div class="social-links">
+      <a href="https://www.instagram.com/abcohasset/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/atlanticbagelanddeli/" target="_blank">Facebook</a>
+      <a href="https://www.yelp.com/biz/atlantic-bagel-and-coffee-hingham" target="_blank">Yelp</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ─── Tab switcher ─── */
+  function switchTab(id) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  /* ─── Scroll fade-in ─── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
